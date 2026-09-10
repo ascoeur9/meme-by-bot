@@ -137,12 +137,14 @@ a:hover {
   margin: 0;
 }
 
+/* Placeholder mask only — full term is never in the locked DOM */
 .term.masked {
-  color: transparent;
-  text-shadow: 0 0 8px rgba(0, 0, 0, 0.35);
+  color: var(--muted);
   background: var(--mask);
   border-radius: 6px;
   padding: 0.05rem 0.35rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
   user-select: none;
 }
 
@@ -188,21 +190,17 @@ a:hover {
   font-size: 0.95rem;
 }
 
-.body-block.masked-block {
-  display: none;
-}
-
-.card.is-unlocked .body-block.masked-block,
-.card[data-needs-unlock="false"] .body-block.masked-block {
-  display: block;
+.body-block[hidden] {
+  display: none !important;
 }
 
 .card.is-unlocked .term.masked,
 .card[data-needs-unlock="false"] .term.masked {
   color: inherit;
-  text-shadow: none;
   background: transparent;
   padding: 0;
+  font-weight: 700;
+  letter-spacing: -0.02em;
   user-select: text;
 }
 

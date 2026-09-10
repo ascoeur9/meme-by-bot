@@ -1,38 +1,26 @@
 ---
-interface Meme {
-  id: string;
-  term: string;
-  meaning: string;
-  example: string;
-  firstSeen: string;
-  peak: string;
-  fade: string;
-  sourceCount: number;
-  tags: string[];
-  status: 'active' | 'faded';
-  sensitivity: 'safe' | 'sensitive';
-  visibilityDefault: 'public' | 'hidden';
-  updatedAt: string;
-}
+import { needsUnlock, maskTerm, unlockPayload, type Meme } from '../lib/meme';
 
 interface Props {
   meme: Meme;
 }
 
 const { meme } = Astro.props;
-const needsUnlock =
-  meme.visibilityDefault === 'hidden' || meme.sensitivity === 'sensitive';
+const locked = needsUnlock(meme);
 const statusLabel = meme.status === 'active' ? '활성' : '쇠퇴';
+const payload = locked ? unlockPayload(meme) : null;
+const displayTerm = locked ? maskTerm(meme.term) : meme.term;
 ---
 <article
   class="card"
   data-meme-id={meme.id}
-  data-needs-unlock={needsUnlock ? 'true' : 'false'}
+  data-needs-unlock={locked ? 'true' : 'false'}
+  data-layout="list"
 >
   <div class="card-top">
-    <h2 class:list={['term', { masked: needsUnlock }]}>{meme.term}</h2>
+    <h2 class:list={['term', { masked: locked }]} data-field="term">{displayTerm}</h2>
     <div class="badges">
-      {needsUnlock && <span class="badge hidden-badge">가려짐</span>}
+      {locked && <span class="badge hidden-badge">가려짐</span>}
       <span class:list={['badge', `status-${meme.status}`]}>{statusLabel}</span>
       {meme.sensitivity === 'sensitive' && <span class="badge">민감</span>}
     </div>
@@ -44,17 +32,30 @@ const statusLabel = meme.status === 'active' ? '활성' : '쇠퇴';
     <span>쇠퇴 {meme.fade}</span>
   </div>
 
-  {needsUnlock && (
+  {locked && (
     <button type="button" class="reveal-btn">내용 보기</button>
   )}
 
-  <div class:list={['body-block', { 'masked-block': needsUnlock }]}>
-    <p>{meme.meaning}</p>
-    <p><strong>예:</strong> {meme.example}</p>
-    <div class="tags">
-      {meme.tags.map((t) => <span class="tag">{t}</span>)}
+  {locked ? (
+    <>
+      {/* Empty until unlock — no plaintext body nodes in the locked DOM */}
+      <div class="body-block" data-unlock-body hidden></div>
+      <script
+        type="application/json"
+        data-unlock-payload
+        is:inline
+        set:html={JSON.stringify(payload)}
+      />
+    </>
+  ) : (
+    <div class="body-block">
+      <p>{meme.meaning}</p>
+      <p><strong>예:</strong> {meme.example}</p>
+      <div class="tags">
+        {meme.tags.map((t) => <span class="tag">{t}</span>)}
+      </div>
     </div>
-  </div>
+  )}
 
   <p class="meta-row" style="margin:0">
     <a href={`/memes/${meme.id}`}>자세히 보기 →</a>

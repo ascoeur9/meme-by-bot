@@ -8,7 +8,10 @@
     "peak": "2024-W08",
     "fade": "2025-W40",
     "sourceCount": 42,
-    "tags": ["일상", "줄임말"],
+    "tags": [
+      "일상",
+      "줄임말"
+    ],
     "status": "faded",
     "sensitivity": "safe",
     "visibilityDefault": "public",
@@ -23,7 +26,10 @@
     "peak": "2025-W22",
     "fade": "2026-W30",
     "sourceCount": 87,
-    "tags": ["리액션", "구어"],
+    "tags": [
+      "리액션",
+      "구어"
+    ],
     "status": "active",
     "sensitivity": "safe",
     "visibilityDefault": "public",
@@ -38,10 +44,67 @@
     "peak": "2025-W10",
     "fade": "2026-W12",
     "sourceCount": 19,
-    "tags": ["민감", "샘플"],
+    "tags": [
+      "민감",
+      "샘플"
+    ],
     "status": "active",
     "sensitivity": "sensitive",
     "visibilityDefault": "hidden",
     "updatedAt": "2026-09-08T00:00:00Z"
+  },
+  {
+    "id": "yareu",
+    "term": "야르",
+    "meaning": "기분 좋거나 일이 잘 풀렸을 때 쓰는 감탄사. 「오예」「앗싸」에 가깝고, 「샤갈」과 대비 세트로 자주 묶인다.",
+    "example": "티켓팅 됐어? — 야르, 오늘 완전 운이다.",
+    "firstSeen": "2025-W18",
+    "peak": "2026-W30",
+    "fade": "2027-W10",
+    "sourceCount": 5,
+    "tags": [
+      "감탄",
+      "Z세대"
+    ],
+    "status": "active",
+    "sensitivity": "safe",
+    "visibilityDefault": "public",
+    "updatedAt": "2026-09-10T10:00:00Z"
+  },
+  {
+    "id": "oo-info",
+    "term": "OO 정보",
+    "meaning": "부럽거나 좋은 상황을 보고 「그 사람/그거 정보」를 묻는 척하는 밈. 실제 문의보다 부러움·리액션 대체어로 쓰인다.",
+    "example": "동생이 저녁 사줬대. — 동생 정보?",
+    "firstSeen": "2026-W36",
+    "peak": "2026-W37",
+    "fade": "2027-W08",
+    "sourceCount": 3,
+    "tags": [
+      "리액션",
+      "SNS"
+    ],
+    "status": "active",
+    "sensitivity": "safe",
+    "visibilityDefault": "public",
+    "updatedAt": "2026-09-10T10:00:00Z"
+  },
+  {
+    "id": "bamti",
+    "term": "밤티",
+    "meaning": "별로이거나 촌스럽다는 평가를 돌려 말하는 표현. 사람·물건·상황에 붙으며, 직접 비평보다 애매해서 오해·상처 소지가 있다.",
+    "example": "이 코디 살짝 밤티네.",
+    "firstSeen": "2025-W40",
+    "peak": "2026-W14",
+    "fade": "2027-W01",
+    "sourceCount": 6,
+    "tags": [
+      "평가",
+      "SNS"
+    ],
+    "status": "active",
+    "sensitivity": "sensitive",
+    "visibilityDefault": "hidden",
+    "updatedAt": "2026-09-10T10:00:00Z"
   }
 ]

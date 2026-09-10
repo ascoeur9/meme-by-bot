@@ -1,0 +1,47 @@
+[
+  {
+    "id": "gwaencha-ne",
+    "term": "괜차네",
+    "meaning": "「괜찮아」를 줄여 쓰거나 발음을 가볍게 친 표현. 별일 없다는 뜻을 부드럽게 전할 때 쓴다.",
+    "example": "오늘 일정 밀렸는데 괜차네, 내일 하면 되지.",
+    "firstSeen": "2023-W12",
+    "peak": "2024-W08",
+    "fade": "2025-W40",
+    "sourceCount": 42,
+    "tags": ["일상", "줄임말"],
+    "status": "faded",
+    "sensitivity": "safe",
+    "visibilityDefault": "public",
+    "updatedAt": "2026-09-01T00:00:00Z"
+  },
+  {
+    "id": "jinjja-molla",
+    "term": "진짜 몰라",
+    "meaning": "놀라움·부정·장난을 한꺼번에 담는 반응 표현. 맥락에 따라 「정말?」과 「관심 없음」 사이를 오간다.",
+    "example": "그 소식 들었어? — 진짜 몰라, 그게 진짜야?",
+    "firstSeen": "2024-W03",
+    "peak": "2025-W22",
+    "fade": "2026-W30",
+    "sourceCount": 87,
+    "tags": ["리액션", "구어"],
+    "status": "active",
+    "sensitivity": "safe",
+    "visibilityDefault": "public",
+    "updatedAt": "2026-09-05T00:00:00Z"
+  },
+  {
+    "id": "masked-sample",
+    "term": "민감 샘플 표현",
+    "meaning": "민감·갈등 맥락에서 자주 쓰이는 샘플 슬랭. 실제 원문·출처 URL은 수록하지 않는다.",
+    "example": "(예시) 그 얘기는 여기서는 가려 둡니다.",
+    "firstSeen": "2024-W40",
+    "peak": "2025-W10",
+    "fade": "2026-W12",
+    "sourceCount": 19,
+    "tags": ["민감", "샘플"],
+    "status": "active",
+    "sensitivity": "sensitive",
+    "visibilityDefault": "hidden",
+    "updatedAt": "2026-09-08T00:00:00Z"
+  }
+]

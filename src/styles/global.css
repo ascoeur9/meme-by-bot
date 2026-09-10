@@ -1,0 +1,285 @@
+:root {
+  --bg: #f7f6f3;
+  --fg: #1a1a1a;
+  --muted: #6b6b6b;
+  --card: #ffffff;
+  --border: #e4e2dc;
+  --accent: #2c5f4a;
+  --accent-soft: #e8f2ed;
+  --badge: #f0ece4;
+  --mask: #d9d6cf;
+  --danger: #8a3b2a;
+  --radius: 12px;
+  --font: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font);
+  line-height: 1.55;
+  min-height: 100%;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.wrap {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 3rem;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--fg);
+  letter-spacing: -0.02em;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.nav a {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.nav a:hover {
+  color: var(--fg);
+}
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--fg);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.35rem 0.7rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.toggle input {
+  accent-color: var(--accent);
+}
+
+.hero {
+  margin-bottom: 1.5rem;
+}
+
+.hero h1 {
+  margin: 0 0 0.4rem;
+  font-size: 1.6rem;
+  letter-spacing: -0.03em;
+}
+
+.hero p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.grid {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.term {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.term.masked {
+  color: transparent;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.35);
+  background: var(--mask);
+  border-radius: 6px;
+  padding: 0.05rem 0.35rem;
+  user-select: none;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.badge {
+  font-size: 0.72rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 999px;
+  background: var(--badge);
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.badge.hidden-badge {
+  background: #efe6d8;
+  color: #7a5a2a;
+}
+
+.badge.status-active {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.badge.status-faded {
+  background: #eee;
+  color: #666;
+}
+
+.meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.body-block {
+  font-size: 0.95rem;
+}
+
+.body-block.masked-block {
+  display: none;
+}
+
+.card.is-unlocked .body-block.masked-block,
+.card[data-needs-unlock="false"] .body-block.masked-block {
+  display: block;
+}
+
+.card.is-unlocked .term.masked,
+.card[data-needs-unlock="false"] .term.masked {
+  color: inherit;
+  text-shadow: none;
+  background: transparent;
+  padding: 0;
+  user-select: text;
+}
+
+.card.is-unlocked .reveal-btn,
+.card[data-needs-unlock="false"] .reveal-btn {
+  display: none;
+}
+
+.card.is-unlocked .badge.hidden-badge,
+.card[data-needs-unlock="false"] .badge.hidden-badge {
+  display: none;
+}
+
+.reveal-btn {
+  appearance: none;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  border-radius: 8px;
+  padding: 0.4rem 0.7rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  color: var(--fg);
+  width: fit-content;
+}
+
+.reveal-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.detail dl {
+  display: grid;
+  gap: 0.75rem;
+  margin: 1rem 0 0;
+}
+
+.detail dt {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+.detail dd {
+  margin: 0.15rem 0 0;
+}
+
+.back {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.footer {
+  margin-top: 2.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.prose h1 {
+  margin-top: 0;
+}
+
+.prose p, .prose ul {
+  color: #333;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.tag {
+  font-size: 0.75rem;
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-radius: 6px;
+  padding: 0.1rem 0.4rem;
+}

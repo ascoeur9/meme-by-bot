@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import memes from '../../../data/memes.json';
+
+export function getStaticPaths() {
+  return memes.map((meme) => ({
+    params: { id: meme.id },
+    props: { meme },
+  }));
+}
+
+const { meme } = Astro.props;
+const needsUnlock =
+  meme.visibilityDefault === 'hidden' || meme.sensitivity === 'sensitive';
+const statusLabel = meme.status === 'active' ? '활성' : '쇠퇴';
+---
+<BaseLayout title={needsUnlock ? '가려진 항목' : meme.term} description={`${meme.term} 라이프사이클`}>
+  <p class="back"><a href="/">← 목록으로</a></p>
+  <article
+    class="card detail"
+    data-meme-id={meme.id}
+    data-needs-unlock={needsUnlock ? 'true' : 'false'}
+  >
+    <div class="card-top">
+      <h1 class:list={['term', { masked: needsUnlock }]}>{meme.term}</h1>
+      <div class="badges">
+        {needsUnlock && <span class="badge hidden-badge">가려짐</span>}
+        <span class:list={['badge', `status-${meme.status}`]}>{statusLabel}</span>
+        {meme.sensitivity === 'sensitive' && <span class="badge">민감</span>}
+      </div>
+    </div>
+
+    <div class="meta-row">
+      <span>첫 등장 {meme.firstSeen}</span>
+      <span>정점 {meme.peak}</span>
+      <span>쇠퇴 {meme.fade}</span>
+      <span>출처 수 {meme.sourceCount}</span>
+    </div>
+
+    {needsUnlock && (
+      <button type="button" class="reveal-btn">내용 보기</button>
+    )}
+
+    <div class:list={['body-block', { 'masked-block': needsUnlock }]}>
+      <dl>
+        <div>
+          <dt>의미</dt>
+          <dd>{meme.meaning}</dd>
+        </div>
+        <div>
+          <dt>예시</dt>
+          <dd>{meme.example}</dd>
+        </div>
+        <div>
+          <dt>라이프사이클</dt>
+          <dd>등장 {meme.firstSeen} → 정점 {meme.peak} → 쇠퇴 {meme.fade}</dd>
+        </div>
+        <div>
+          <dt>태그</dt>
+          <dd class="tags">
+            {meme.tags.map((t) => <span class="tag">{t}</span>)}
+          </dd>
+        </div>
+        <div>
+          <dt>갱신</dt>
+          <dd>{meme.updatedAt}</dd>
+        </div>
+      </dl>
+    </div>
+  </article>
+</BaseLayout>

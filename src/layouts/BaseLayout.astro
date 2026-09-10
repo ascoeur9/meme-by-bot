@@ -1,0 +1,46 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = 'meme-by-bot', description = '한국 밈·슬랭 라이프사이클 아카이브' } = Astro.props;
+const pageTitle = title === 'meme-by-bot' ? title : `${title} · meme-by-bot`;
+---
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{pageTitle}</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="site-header">
+        <a class="brand" href="/">meme-by-bot</a>
+        <nav class="nav">
+          <a href="/">목록</a>
+          <a href="/about">소개</a>
+          <label class="toggle" title="민감·숨김 항목을 모두 표시">
+            <input type="checkbox" id="show-all-toggle" />
+            <span>전부 보기</span>
+          </label>
+        </nav>
+      </header>
+      <main>
+        <slot />
+      </main>
+      <footer class="footer">
+        원문·출처 URL은 수록하지 않습니다. 민감 표현은 기본 가려집니다.
+      </footer>
+    </div>
+    <script>
+      import { initVisibilityControls } from '../scripts/visibility';
+      initVisibilityControls();
+    </script>
+  </body>
+</html>

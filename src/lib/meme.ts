@@ -62,7 +62,7 @@ export function hasFade(fade?: string | null): boolean {
 
 /** Neutral placeholder — safe to put in the locked DOM (no first-grapheme leak). */
 export function maskTerm(_term?: string): string {
-  return '····';
+  return '접혀 있음';
 }
 
 /**

@@ -1,0 +1,129 @@
+---
+import { needsUnlock, maskTerm, unlockPayload, formatIsoWeekKo, hasFade, platformLabel, type Meme } from '../lib/meme';
+
+interface Props {
+  meme: Meme;
+  layout: 'list' | 'detail';
+  index?: number;
+}
+
+const { meme, layout, index } = Astro.props;
+const locked = needsUnlock(meme);
+const statusLabel = meme.status === 'active' ? '활성' : '쇠퇴';
+const payload = locked ? unlockPayload(meme) : null;
+const displayTerm = locked ? maskTerm(meme.term) : meme.term;
+const sources = meme.sources ?? [];
+const showFade = hasFade(meme.fade);
+const folio = typeof index === 'number' ? String(index + 1).padStart(2, '0') : null;
+---
+<article
+  class:list={['entry', { detail: layout === 'detail', folded: locked }]}
+  data-meme-id={meme.id}
+  data-needs-unlock={locked ? 'true' : 'false'}
+  data-layout={layout}
+>
+  <header class="entry-head">
+    <div class="entry-head-main">
+      {folio && <span class="folio">{folio}</span>}
+      {layout === 'detail' ? (
+        <h1 class:list={['term', { masked: locked }]} data-field="term">{displayTerm}</h1>
+      ) : (
+        <h2 class:list={['term', { masked: locked }]} data-field="term">{displayTerm}</h2>
+      )}
+    </div>
+    <p class="status">{statusLabel}</p>
+  </header>
+
+  <p class="dateline">
+    <span>등장 {formatIsoWeekKo(meme.firstSeen)}</span>
+    <span>정점 {formatIsoWeekKo(meme.peak)}</span>
+    {showFade && <span data-field="fade">쇠퇴 {formatIsoWeekKo(meme.fade as string)}</span>}
+    {layout === 'detail' && <span>출처 {meme.sourceCount}건</span>}
+  </p>
+
+  {locked && (
+    <p class="fold-actions">
+      <button type="button" class="reveal-btn" aria-label="주의하고 열어보기">주의하고 열어보기</button>
+    </p>
+  )}
+
+  {locked ? (
+    <>
+      {/* Empty until unlock — no plaintext body/sources in the locked DOM */}
+      <div class="body-block" data-unlock-body hidden></div>
+      <script
+        type="application/json"
+        data-unlock-payload
+        is:inline
+        set:html={JSON.stringify(payload)}
+      />
+    </>
+  ) : layout === 'detail' ? (
+    <div class="body-block">
+      <dl class="entry-dl">
+        <div>
+          <dt>의미</dt>
+          <dd>{meme.meaning}</dd>
+        </div>
+        <div>
+          <dt>예시</dt>
+          <dd>{meme.example}</dd>
+        </div>
+        {meme.tags.length > 0 && (
+          <div>
+            <dt>태그</dt>
+            <dd class="tags">{meme.tags.join(' · ')}</dd>
+          </div>
+        )}
+        {sources.length > 0 && (
+          <div>
+            <dt>출처</dt>
+            <dd>
+              <ul class="sources-list">
+                {sources.map((s) => {
+                  const plat = platformLabel(s.platform);
+                  return (
+                    <li>
+                      <a href={s.url} target="_blank" rel="noopener noreferrer">{s.label}</a>
+                      {plat && <span class="source-platform">{plat}</span>}
+                    </li>
+                  );
+                })}
+              </ul>
+            </dd>
+          </div>
+        )}
+        <div>
+          <dt>갱신</dt>
+          <dd>{meme.updatedAt}</dd>
+        </div>
+      </dl>
+    </div>
+  ) : (
+    <div class="body-block">
+      <p class="meaning">{meme.meaning}</p>
+      <p class="example"><span class="label">예</span> {meme.example}</p>
+      {meme.tags.length > 0 && <p class="tags">{meme.tags.join(' · ')}</p>}
+      {sources.length > 0 && (
+        <div class="sources">
+          <span class="sources-label">출처</span>
+          <ul class="sources-list">
+            {sources.map((s) => {
+              const plat = platformLabel(s.platform);
+              return (
+                <li>
+                  <a href={s.url} target="_blank" rel="noopener noreferrer">{s.label}</a>
+                  {plat && <span class="source-platform">{plat}</span>}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      )}
+    </div>
+  )}
+
+  {layout === 'list' && (
+    <p class="entry-more"><a href={`/memes/${meme.id}`}>자세히 보기</a></p>
+  )}
+</article>

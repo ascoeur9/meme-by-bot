@@ -1,4 +1,4 @@
-import { formatIsoWeekKo, hasFade, platformLabel, type MemeSource, type UnlockPayload } from '../lib/meme';
+import { maskTerm, platformLabel, type MemeSource, type UnlockPayload } from '../lib/meme';
 
 const STORAGE_KEY = 'meme-by-bot:show-all';
 
@@ -18,10 +18,6 @@ export function setShowAll(value: boolean): void {
   }
 }
 
-function maskTerm(_term?: string): string {
-  return '····';
-}
-
 function readPayload(card: HTMLElement): UnlockPayload | null {
   const el = card.querySelector<HTMLScriptElement>('script[type="application/json"][data-unlock-payload]');
   if (!el?.textContent) return null;
@@ -32,14 +28,23 @@ function readPayload(card: HTMLElement): UnlockPayload | null {
   }
 }
 
-function renderTags(container: HTMLElement, tags: string[]): void {
-  container.replaceChildren();
-  for (const t of tags) {
-    const span = document.createElement('span');
-    span.className = 'tag';
-    span.textContent = t;
-    container.appendChild(span);
+function appendSourceItem(list: HTMLUListElement, s: MemeSource): void {
+  const li = document.createElement('li');
+  const a = document.createElement('a');
+  a.href = s.url;
+  a.textContent = s.label;
+  a.target = '_blank';
+  a.rel = 'noopener noreferrer';
+  li.appendChild(a);
+  const tag = platformLabel(s.platform);
+  if (tag) {
+    const plat = document.createElement('span');
+    plat.className = 'source-platform';
+    plat.textContent = tag;
+    li.appendChild(document.createTextNode(' '));
+    li.appendChild(plat);
   }
+  list.appendChild(li);
 }
 
 function renderSources(container: HTMLElement, sources: MemeSource[]): void {
@@ -53,22 +58,7 @@ function renderSources(container: HTMLElement, sources: MemeSource[]): void {
   const list = document.createElement('ul');
   list.className = 'sources-list';
   for (const s of sources) {
-    const li = document.createElement('li');
-    const a = document.createElement('a');
-    a.href = s.url;
-    a.textContent = s.label;
-    a.target = '_blank';
-    a.rel = 'noopener noreferrer';
-    li.appendChild(a);
-    const tag = platformLabel(s.platform);
-    if (tag) {
-      const plat = document.createElement('span');
-      plat.className = 'source-platform';
-      plat.textContent = tag;
-      li.appendChild(document.createTextNode(' '));
-      li.appendChild(plat);
-    }
-    list.appendChild(li);
+    appendSourceItem(list, s);
   }
   container.appendChild(list);
 }
@@ -76,15 +66,21 @@ function renderSources(container: HTMLElement, sources: MemeSource[]): void {
 function hydrateListBody(body: HTMLElement, payload: UnlockPayload): void {
   body.replaceChildren();
   const meaning = document.createElement('p');
+  meaning.className = 'meaning';
   meaning.textContent = payload.meaning;
   const example = document.createElement('p');
-  const exLabel = document.createElement('strong');
-  exLabel.textContent = '예:';
+  example.className = 'example';
+  const exLabel = document.createElement('span');
+  exLabel.className = 'label';
+  exLabel.textContent = '예';
   example.append(exLabel, document.createTextNode(` ${payload.example}`));
-  const tags = document.createElement('div');
-  tags.className = 'tags';
-  renderTags(tags, payload.tags);
-  body.append(meaning, example, tags);
+  body.append(meaning, example);
+  if (payload.tags.length) {
+    const tags = document.createElement('p');
+    tags.className = 'tags';
+    tags.textContent = payload.tags.join(' · ');
+    body.append(tags);
+  }
   if (payload.sources?.length) {
     const sources = document.createElement('div');
     renderSources(sources, payload.sources);
@@ -95,6 +91,7 @@ function hydrateListBody(body: HTMLElement, payload: UnlockPayload): void {
 function hydrateDetailBody(body: HTMLElement, payload: UnlockPayload): void {
   body.replaceChildren();
   const dl = document.createElement('dl');
+  dl.className = 'entry-dl';
 
   const addRow = (label: string, fill: (dd: HTMLElement) => void) => {
     const wrap = document.createElement('div');
@@ -112,23 +109,20 @@ function hydrateDetailBody(body: HTMLElement, payload: UnlockPayload): void {
   addRow('예시', (dd) => {
     dd.textContent = payload.example;
   });
-  addRow('라이프사이클', (dd) => {
-    const parts = [
-      `등장 ${formatIsoWeekKo(payload.firstSeen)}`,
-      `정점 ${formatIsoWeekKo(payload.peak)}`,
-    ];
-    if (hasFade(payload.fade)) {
-      parts.push(`쇠퇴 ${formatIsoWeekKo(payload.fade!)}`);
-    }
-    dd.textContent = parts.join(' → ');
-  });
-  addRow('태그', (dd) => {
-    dd.className = 'tags';
-    renderTags(dd, payload.tags);
-  });
+  if (payload.tags.length) {
+    addRow('태그', (dd) => {
+      dd.className = 'tags';
+      dd.textContent = payload.tags.join(' · ');
+    });
+  }
   if (payload.sources?.length) {
     addRow('출처', (dd) => {
-      renderSources(dd, payload.sources!);
+      const list = document.createElement('ul');
+      list.className = 'sources-list';
+      for (const s of payload.sources!) {
+        appendSourceItem(list, s);
+      }
+      dd.append(list);
     });
   }
   addRow('갱신', (dd) => {

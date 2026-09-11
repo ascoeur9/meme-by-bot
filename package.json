@@ -7,7 +7,10 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "test": "npm run build && node --experimental-strip-types --test tests/*.test.ts",
+    "test:unit": "node --experimental-strip-types --test tests/unit.test.ts",
+    "test:html": "node --experimental-strip-types --test tests/html-check.test.ts"
   },
   "dependencies": {
     "astro": "^5.1.0"

@@ -37,3 +37,15 @@ npx wrangler deploy
 
 - 「전부 보기」 토글은 `localStorage` 에 저장됩니다.
 - 접힌 항목은 잠금 시 본문(용어·의미·예시)을 HTML 텍스트 노드로 넣지 않습니다. 표제는 「접혀 있음」이고 주차/상태만 보이며, 항목별 「주의하고 열어보기」 또는 전역 「전부 보기」로 잠금 해제하면 클라이언트 JS가 JSON 페이로드에서 본문을 채웁니다.
+
+## Inbox merge (Grok → memes.json)
+
+Drop survey JSON arrays into `inbox/grok/` (each file = array of meme objects). Then:
+
+```bash
+npm run merge-inbox
+```
+
+The script validates required fields, **fails on duplicate `id`**, appends new rows to `data/memes.json`, and deletes processed inbox JSON files. A GitHub Action (`.github/workflows/merge-inbox.yml`) runs the same merge on pushes that touch `inbox/grok/**` (or via **workflow_dispatch**) and commits the result.
+
+See `inbox/grok/README.md` for field notes.

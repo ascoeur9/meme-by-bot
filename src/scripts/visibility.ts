@@ -1,15 +1,6 @@
-const STORAGE_KEY = 'meme-by-bot:show-all';
+import { formatIsoWeekKo, type MemeSource, type UnlockPayload } from '../lib/meme';
 
-interface UnlockPayload {
-  term: string;
-  meaning: string;
-  example: string;
-  tags: string[];
-  firstSeen: string;
-  peak: string;
-  fade: string;
-  updatedAt: string;
-}
+const STORAGE_KEY = 'meme-by-bot:show-all';
 
 export function isShowAll(): boolean {
   try {
@@ -51,6 +42,29 @@ function renderTags(container: HTMLElement, tags: string[]): void {
   }
 }
 
+function renderSources(container: HTMLElement, sources: MemeSource[]): void {
+  container.replaceChildren();
+  container.className = 'sources';
+  if (!sources.length) return;
+  const label = document.createElement('span');
+  label.className = 'sources-label';
+  label.textContent = '출처';
+  container.appendChild(label);
+  const list = document.createElement('ul');
+  list.className = 'sources-list';
+  for (const s of sources) {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = s.url;
+    a.textContent = s.label;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    li.appendChild(a);
+    list.appendChild(li);
+  }
+  container.appendChild(list);
+}
+
 function hydrateListBody(body: HTMLElement, payload: UnlockPayload): void {
   body.replaceChildren();
   const meaning = document.createElement('p');
@@ -63,6 +77,11 @@ function hydrateListBody(body: HTMLElement, payload: UnlockPayload): void {
   tags.className = 'tags';
   renderTags(tags, payload.tags);
   body.append(meaning, example, tags);
+  if (payload.sources?.length) {
+    const sources = document.createElement('div');
+    renderSources(sources, payload.sources);
+    body.append(sources);
+  }
 }
 
 function hydrateDetailBody(body: HTMLElement, payload: UnlockPayload): void {
@@ -86,12 +105,17 @@ function hydrateDetailBody(body: HTMLElement, payload: UnlockPayload): void {
     dd.textContent = payload.example;
   });
   addRow('라이프사이클', (dd) => {
-    dd.textContent = `등장 ${payload.firstSeen} → 정점 ${payload.peak} → 쇠퇴 ${payload.fade}`;
+    dd.textContent = `등장 ${formatIsoWeekKo(payload.firstSeen)} → 정점 ${formatIsoWeekKo(payload.peak)} → 쇠퇴 ${formatIsoWeekKo(payload.fade)}`;
   });
   addRow('태그', (dd) => {
     dd.className = 'tags';
     renderTags(dd, payload.tags);
   });
+  if (payload.sources?.length) {
+    addRow('출처', (dd) => {
+      renderSources(dd, payload.sources!);
+    });
+  }
   addRow('갱신', (dd) => {
     dd.textContent = payload.updatedAt;
   });

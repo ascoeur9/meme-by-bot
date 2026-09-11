@@ -1,5 +1,5 @@
 ---
-import { needsUnlock, maskTerm, unlockPayload, type Meme } from '../lib/meme';
+import { needsUnlock, maskTerm, unlockPayload, formatIsoWeekKo, type Meme } from '../lib/meme';
 
 interface Props {
   meme: Meme;
@@ -10,6 +10,7 @@ const locked = needsUnlock(meme);
 const statusLabel = meme.status === 'active' ? '활성' : '쇠퇴';
 const payload = locked ? unlockPayload(meme) : null;
 const displayTerm = locked ? maskTerm(meme.term) : meme.term;
+const sources = meme.sources ?? [];
 ---
 <article
   class="card"
@@ -26,9 +27,9 @@ const displayTerm = locked ? maskTerm(meme.term) : meme.term;
   </div>
 
   <div class="meta-row">
-    <span>첫 등장 {meme.firstSeen}</span>
-    <span>정점 {meme.peak}</span>
-    <span>쇠퇴 {meme.fade}</span>
+    <span>첫 등장 {formatIsoWeekKo(meme.firstSeen)}</span>
+    <span>정점 {formatIsoWeekKo(meme.peak)}</span>
+    <span>쇠퇴 {formatIsoWeekKo(meme.fade)}</span>
   </div>
 
   {locked && (
@@ -40,7 +41,7 @@ const displayTerm = locked ? maskTerm(meme.term) : meme.term;
 
   {locked ? (
     <>
-      {/* Empty until unlock — no plaintext body nodes in the locked DOM */}
+      {/* Empty until unlock — no plaintext body/sources in the locked DOM */}
       <div class="body-block" data-unlock-body hidden></div>
       <script
         type="application/json"
@@ -56,6 +57,18 @@ const displayTerm = locked ? maskTerm(meme.term) : meme.term;
       <div class="tags">
         {meme.tags.map((t) => <span class="tag">{t}</span>)}
       </div>
+      {sources.length > 0 && (
+        <div class="sources">
+          <span class="sources-label">출처</span>
+          <ul class="sources-list">
+            {sources.map((s) => (
+              <li>
+                <a href={s.url} target="_blank" rel="noopener noreferrer">{s.label}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   )}
 

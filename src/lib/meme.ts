@@ -1,6 +1,24 @@
+export type MemeSourcePlatform = 'x' | 'instagram' | 'tiktok' | 'article' | 'other';
+
 export interface MemeSource {
   label: string;
+  /** Public permalink only — never store full post body. */
   url: string;
+  platform?: MemeSourcePlatform;
+}
+
+const PLATFORM_LABELS: Record<MemeSourcePlatform, string> = {
+  x: 'X',
+  instagram: 'Instagram',
+  tiktok: 'TikTok',
+  article: '기사',
+  other: '기타',
+};
+
+/** Calm Korean/Latin label for source platform tags. */
+export function platformLabel(platform?: MemeSourcePlatform): string | null {
+  if (!platform) return null;
+  return PLATFORM_LABELS[platform] ?? null;
 }
 
 export interface Meme {

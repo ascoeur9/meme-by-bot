@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import memes from '../../../data/memes.json';
-import { needsUnlock, maskTerm, unlockPayload, formatIsoWeekKo, hasFade, type Meme } from '../../lib/meme';
+import { needsUnlock, maskTerm, unlockPayload, formatIsoWeekKo, hasFade, platformLabel, type Meme } from '../../lib/meme';
 
 export function getStaticPaths() {
   return (memes as Meme[]).map((meme) => ({
@@ -94,11 +94,15 @@ const lifecycleText = showFade
               <dd>
                 <div class="sources">
                   <ul class="sources-list">
-                    {sources.map((s) => (
+                    {sources.map((s) => {
+                      const plat = platformLabel(s.platform);
+                      return (
                       <li>
                         <a href={s.url} target="_blank" rel="noopener noreferrer">{s.label}</a>
+                        {plat && <span class="source-platform">{plat}</span>}
                       </li>
-                    ))}
+                      );
+                    })}
                   </ul>
                 </div>
               </dd>

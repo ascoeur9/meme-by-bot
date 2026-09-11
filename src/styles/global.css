@@ -318,3 +318,16 @@ a:hover {
 .detail .sources-list {
   padding-left: 1.1rem;
 }
+
+.source-platform {
+  display: inline-block;
+  margin-left: 0.35rem;
+  padding: 0.05rem 0.35rem;
+  font-size: 0.72rem;
+  line-height: 1.4;
+  color: var(--muted);
+  background: color-mix(in srgb, var(--muted) 12%, transparent);
+  border-radius: 999px;
+  vertical-align: middle;
+  white-space: nowrap;
+}

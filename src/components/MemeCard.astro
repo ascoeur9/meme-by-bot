@@ -1,5 +1,5 @@
 ---
-import { needsUnlock, maskTerm, unlockPayload, formatIsoWeekKo, hasFade, type Meme } from '../lib/meme';
+import { needsUnlock, maskTerm, unlockPayload, formatIsoWeekKo, hasFade, platformLabel, type Meme } from '../lib/meme';
 
 interface Props {
   meme: Meme;
@@ -62,11 +62,15 @@ const showFade = hasFade(meme.fade);
         <div class="sources">
           <span class="sources-label">출처</span>
           <ul class="sources-list">
-            {sources.map((s) => (
+            {sources.map((s) => {
+              const plat = platformLabel(s.platform);
+              return (
               <li>
                 <a href={s.url} target="_blank" rel="noopener noreferrer">{s.label}</a>
+                {plat && <span class="source-platform">{plat}</span>}
               </li>
-            ))}
+              );
+            })}
           </ul>
         </div>
       )}

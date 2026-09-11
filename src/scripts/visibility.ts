@@ -1,4 +1,4 @@
-import { formatIsoWeekKo, hasFade, type MemeSource, type UnlockPayload } from '../lib/meme';
+import { formatIsoWeekKo, hasFade, platformLabel, type MemeSource, type UnlockPayload } from '../lib/meme';
 
 const STORAGE_KEY = 'meme-by-bot:show-all';
 
@@ -60,6 +60,14 @@ function renderSources(container: HTMLElement, sources: MemeSource[]): void {
     a.target = '_blank';
     a.rel = 'noopener noreferrer';
     li.appendChild(a);
+    const tag = platformLabel(s.platform);
+    if (tag) {
+      const plat = document.createElement('span');
+      plat.className = 'source-platform';
+      plat.textContent = tag;
+      li.appendChild(document.createTextNode(' '));
+      li.appendChild(plat);
+    }
     list.appendChild(li);
   }
   container.appendChild(list);

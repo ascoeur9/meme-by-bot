@@ -8,9 +8,15 @@
     "peak": "2026-W37",
     "sourceCount": 3,
     "sources": [
-      {"label": "트렌드어워드 정리 (2026-09-09)", "url": "https://maily.so/trendaword/posts/wdr9qxn0olx"}
+      {
+        "label": "트렌드어워드 정리 (2026-09-09)",
+        "url": "https://maily.so/trendaword/posts/wdr9qxn0olx"
+      }
     ],
-    "tags": ["리액션", "SNS"],
+    "tags": [
+      "리액션",
+      "SNS"
+    ],
     "status": "active",
     "sensitivity": "safe",
     "visibilityDefault": "public",
@@ -25,9 +31,15 @@
     "peak": "2026-W36",
     "sourceCount": 2,
     "sources": [
-      {"label": "HSAD 월간 2026밈 9월", "url": "https://blog.hsad.co.kr/3776"}
+      {
+        "label": "HSAD 월간 2026밈 9월",
+        "url": "https://blog.hsad.co.kr/3776"
+      }
     ],
-    "tags": ["템플릿", "희화"],
+    "tags": [
+      "템플릿",
+      "희화"
+    ],
     "status": "active",
     "sensitivity": "safe",
     "visibilityDefault": "public",
@@ -42,9 +54,15 @@
     "peak": "2026-W36",
     "sourceCount": 2,
     "sources": [
-      {"label": "HSAD 월간 2026밈 9월", "url": "https://blog.hsad.co.kr/3776"}
+      {
+        "label": "HSAD 월간 2026밈 9월",
+        "url": "https://blog.hsad.co.kr/3776"
+      }
     ],
-    "tags": ["말투", "커뮤니티"],
+    "tags": [
+      "말투",
+      "커뮤니티"
+    ],
     "status": "active",
     "sensitivity": "safe",
     "visibilityDefault": "public",
@@ -59,9 +77,15 @@
     "peak": "2026-W34",
     "sourceCount": 2,
     "sources": [
-      {"label": "인스타공백 밈 사전 (2026-08)", "url": "https://www.instablank.com/meme"}
+      {
+        "label": "인스타공백 밈 사전 (2026-08)",
+        "url": "https://www.instablank.com/meme"
+      }
     ],
-    "tags": ["조롱", "SNS"],
+    "tags": [
+      "조롱",
+      "SNS"
+    ],
     "status": "active",
     "sensitivity": "sensitive",
     "visibilityDefault": "hidden",
@@ -76,10 +100,19 @@
     "peak": "2026-W30",
     "sourceCount": 4,
     "sources": [
-      {"label": "다이어리포인트 보도", "url": "https://www.diarypoint.com/news/articleView.html?idxno=4243"},
-      {"label": "매일경제 커버스토리", "url": "https://www.mk.co.kr/news/culture/12115349"}
+      {
+        "label": "다이어리포인트 보도",
+        "url": "https://www.diarypoint.com/news/articleView.html?idxno=4243"
+      },
+      {
+        "label": "매일경제 커버스토리",
+        "url": "https://www.mk.co.kr/news/culture/12115349"
+      }
     ],
-    "tags": ["감탄", "Z세대"],
+    "tags": [
+      "감탄",
+      "Z세대"
+    ],
     "status": "active",
     "sensitivity": "safe",
     "visibilityDefault": "public",
@@ -94,10 +127,19 @@
     "peak": "2026-W28",
     "sourceCount": 4,
     "sources": [
-      {"label": "다이어리포인트 보도", "url": "https://www.diarypoint.com/news/articleView.html?idxno=4243"},
-      {"label": "여행픽 신조어 정리", "url": "https://www.thetrippick.com/news/articleView.html?idxno=3296"}
+      {
+        "label": "다이어리포인트 보도",
+        "url": "https://www.diarypoint.com/news/articleView.html?idxno=4243"
+      },
+      {
+        "label": "여행픽 신조어 정리",
+        "url": "https://www.thetrippick.com/news/articleView.html?idxno=3296"
+      }
     ],
-    "tags": ["감탄", "순화"],
+    "tags": [
+      "감탄",
+      "순화"
+    ],
     "status": "active",
     "sensitivity": "sensitive",
     "visibilityDefault": "hidden",
@@ -112,12 +154,206 @@
     "peak": "2026-W33",
     "sourceCount": 2,
     "sources": [
-      {"label": "다이어리포인트 보도", "url": "https://www.diarypoint.com/news/articleView.html?idxno=4243"}
+      {
+        "label": "다이어리포인트 보도",
+        "url": "https://www.diarypoint.com/news/articleView.html?idxno=4243"
+      }
     ],
-    "tags": ["일상", "줄임말"],
+    "tags": [
+      "일상",
+      "줄임말"
+    ],
     "status": "active",
     "sensitivity": "safe",
     "visibilityDefault": "public",
     "updatedAt": "2026-09-11T02:00:00Z"
+  },
+  {
+    "id": "yeong-keu-keu",
+    "term": "영크크",
+    "meaning": "CORTIS 곡 YOUNGCREATORCREW에서 나온 말로, 젊고 트렌디한 감각·사람을 가리키는 추임새. 반대말은 늙크크.",
+    "example": "천지인 쓰니까 늙크크 소리 들음",
+    "firstSeen": "2026-W19",
+    "peak": "2026-W25",
+    "sourceCount": 3,
+    "sources": [
+      {
+        "label": "천지인=늙크크 일상 사용",
+        "url": "https://x.com/be_bear10/status/2098246011559043085",
+        "platform": "x"
+      },
+      {
+        "label": "영크크들 폰 확인 안 함",
+        "url": "https://x.com/eomjuunsik/status/2097958761130500112",
+        "platform": "x"
+      },
+      {
+        "label": "코르티스 1주년 영크크 언급",
+        "url": "https://x.com/yonhaptweet/status/2089520593586757988",
+        "platform": "x"
+      }
+    ],
+    "tags": [
+      "kpop",
+      "cortis",
+      "slang",
+      "generational"
+    ],
+    "status": "active",
+    "sensitivity": "safe",
+    "visibilityDefault": "public",
+    "updatedAt": "2026-09-11T12:05:00+09:00"
+  },
+  {
+    "id": "neulg-keu-keu",
+    "term": "늙크크",
+    "meaning": "영크크의 패러디. 유행을 모르거나 기성세대 감성이라는 놀림·자조.",
+    "example": "아니야 크리스크로스야 이 늙크크야",
+    "firstSeen": "2026-W20",
+    "peak": "2026-W25",
+    "sourceCount": 2,
+    "sources": [
+      {
+        "label": "키보드 천지인=늙크크",
+        "url": "https://x.com/be_bear10/status/2098246011559043085",
+        "platform": "x"
+      },
+      {
+        "label": "크리스크로스 vs 늙크크",
+        "url": "https://x.com/mvwmva/status/2098242721928683943",
+        "platform": "x"
+      }
+    ],
+    "tags": [
+      "kpop",
+      "slang",
+      "parody"
+    ],
+    "status": "active",
+    "sensitivity": "safe",
+    "visibilityDefault": "public",
+    "updatedAt": "2026-09-11T12:05:00+09:00"
+  },
+  {
+    "id": "geoje-yaho",
+    "term": "거제 야호",
+    "meaning": "RESCENE 미나미가 갸루 분장 브이로그에서 갑자기 외친 대사. 의미 없는 하이텐션 구호로 복제됨.",
+    "example": "자꾸 몰래 거제야호 함",
+    "firstSeen": "2026-W20",
+    "peak": "2026-W24",
+    "sourceCount": 2,
+    "sources": [
+      {
+        "label": "몰래 거제야호 영상",
+        "url": "https://x.com/_9xng2/status/2098097301466300499",
+        "platform": "x"
+      },
+      {
+        "label": "거제야호~ 짧은 클립",
+        "url": "https://x.com/e_stxr7/status/2098034596743119119",
+        "platform": "x"
+      }
+    ],
+    "tags": [
+      "kpop",
+      "rescene",
+      "catchphrase",
+      "clip"
+    ],
+    "status": "active",
+    "sensitivity": "safe",
+    "visibilityDefault": "public",
+    "updatedAt": "2026-09-11T12:05:00+09:00"
+  },
+  {
+    "id": "ganan-keot-eo",
+    "term": "가난하게 컸어?",
+    "meaning": "상대의 취향·습관을 빈정대며 던지는 대사형 밈. 드라마 대사에서 숏폼으로 퍼짐.",
+    "example": "오늘자 요약: 가난하게컸어? / 어~씨발련아!!!",
+    "firstSeen": "2026-W35",
+    "peak": "2026-W37",
+    "sourceCount": 2,
+    "sources": [
+      {
+        "label": "웹툰 요약에 대사 삽입",
+        "url": "https://x.com/letssoong/status/2098050857808154981",
+        "platform": "x"
+      },
+      {
+        "label": "삼국 패러디 영상",
+        "url": "https://x.com/iamnotMrchu/status/2098066690663932136",
+        "platform": "x"
+      }
+    ],
+    "tags": [
+      "catchphrase",
+      "shortform",
+      "roast"
+    ],
+    "status": "active",
+    "sensitivity": "sensitive",
+    "visibilityDefault": "hidden",
+    "updatedAt": "2026-09-11T12:05:00+09:00"
+  },
+  {
+    "id": "neu-jot",
+    "term": "느좋",
+    "meaning": "느낌 좋다의 줄임. 분위기·비주얼·취향이 좋다는 짧은 평.",
+    "example": "가을남자 오시온 느좋",
+    "firstSeen": "2024-W01",
+    "peak": "2026-W37",
+    "sourceCount": 2,
+    "sources": [
+      {
+        "label": "아이돌 컷 느좋",
+        "url": "https://x.com/doong2_53/status/2098244132703764977",
+        "platform": "x"
+      },
+      {
+        "label": "팬아트 평 ㄹㅈㄷ느좋",
+        "url": "https://x.com/Ming_Mnii/status/2098246339868127392",
+        "platform": "x"
+      }
+    ],
+    "tags": [
+      "slang",
+      "abbreviation",
+      "fandom"
+    ],
+    "status": "active",
+    "sensitivity": "safe",
+    "visibilityDefault": "public",
+    "updatedAt": "2026-09-11T12:05:00+09:00"
+  },
+  {
+    "id": "speaky",
+    "term": "스피키",
+    "meaning": "게임 트릭컬 캐릭터. 호박·울음·맹한 리액션이 짤·성대모사로 도는 커뮤니티 밈.",
+    "example": "스피키 진짜 인기폭발이네",
+    "firstSeen": "2026-W18",
+    "peak": "2026-W35",
+    "sourceCount": 2,
+    "sources": [
+      {
+        "label": "굿즈 반응 인기폭발",
+        "url": "https://x.com/Drone0/status/2098065644852015404",
+        "platform": "x"
+      },
+      {
+        "label": "스피키 티셔츠 일상",
+        "url": "https://x.com/speaki_mom_y0i/status/2098211186680746022",
+        "platform": "x"
+      }
+    ],
+    "tags": [
+      "game",
+      "trickcal",
+      "character",
+      "fandom"
+    ],
+    "status": "active",
+    "sensitivity": "safe",
+    "visibilityDefault": "public",
+    "updatedAt": "2026-09-11T12:05:00+09:00"
   }
 ]

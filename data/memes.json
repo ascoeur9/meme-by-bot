@@ -36,24 +36,6 @@
     "updatedAt": "2026-09-05T00:00:00Z"
   },
   {
-    "id": "masked-sample",
-    "term": "민감 샘플 표현",
-    "meaning": "민감·갈등 맥락에서 자주 쓰이는 샘플 슬랭. 실제 원문·출처 URL은 수록하지 않는다.",
-    "example": "(예시) 그 얘기는 여기서는 가려 둡니다.",
-    "firstSeen": "2024-W40",
-    "peak": "2025-W10",
-    "fade": "2026-W12",
-    "sourceCount": 19,
-    "tags": [
-      "민감",
-      "샘플"
-    ],
-    "status": "active",
-    "sensitivity": "sensitive",
-    "visibilityDefault": "hidden",
-    "updatedAt": "2026-09-08T00:00:00Z"
-  },
-  {
     "id": "yareu",
     "term": "야르",
     "meaning": "기분 좋거나 일이 잘 풀렸을 때 쓰는 감탄사. 「오예」「앗싸」에 가깝고, 「샤갈」과 대비 세트로 자주 묶인다.",

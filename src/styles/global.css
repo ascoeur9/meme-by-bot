@@ -205,13 +205,21 @@ a:hover {
 }
 
 .card.is-unlocked .reveal-btn,
-.card[data-needs-unlock="false"] .reveal-btn {
+.card[data-needs-unlock="false"] .reveal-btn,
+.card.is-unlocked .fold-hint,
+.card[data-needs-unlock="false"] .fold-hint {
   display: none;
 }
 
 .card.is-unlocked .badge.hidden-badge,
 .card[data-needs-unlock="false"] .badge.hidden-badge {
   display: none;
+}
+
+.fold-hint {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--muted);
 }
 
 .reveal-btn {

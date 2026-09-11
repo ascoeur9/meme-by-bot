@@ -27,9 +27,8 @@ export function setShowAll(value: boolean): void {
   }
 }
 
-function maskTerm(term: string): string {
-  const first = [...term][0];
-  return first ? `${first}…` : '…';
+function maskTerm(_term?: string): string {
+  return '····';
 }
 
 function readPayload(card: HTMLElement): UnlockPayload | null {

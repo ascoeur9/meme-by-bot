@@ -6,7 +6,7 @@ import memes from '../../data/memes.json';
 <BaseLayout title="meme-by-bot" description="한국 밈·슬랭 라이프사이클 아카이브">
   <section class="hero">
     <h1>밈·슬랭 라이프사이클</h1>
-    <p>등장 → 정점 → 쇠퇴 주기를 기록하는 아카이브입니다. 민감·숨김 항목은 기본으로 가려집니다.</p>
+    <p>등장 → 정점 → 쇠퇴 주기를 기록하는 아카이브입니다. 접힌 항목은 필요할 때만 열어보면 돼요.</p>
   </section>
   <section class="grid" aria-label="밈 목록">
     {memes.map((meme) => <MemeCard meme={meme} />)}

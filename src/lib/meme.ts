@@ -30,10 +30,9 @@ export function needsUnlock(meme: Pick<Meme, 'sensitivity' | 'visibilityDefault'
   return meme.visibilityDefault === 'hidden' || meme.sensitivity === 'sensitive';
 }
 
-/** First grapheme + ellipsis — safe to put in the locked DOM. */
-export function maskTerm(term: string): string {
-  const first = [...term][0];
-  return first ? `${first}…` : '…';
+/** Neutral placeholder — safe to put in the locked DOM (no first-grapheme leak). */
+export function maskTerm(_term?: string): string {
+  return '····';
 }
 
 export function unlockPayload(meme: Meme): UnlockPayload {

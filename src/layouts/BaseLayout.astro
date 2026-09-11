@@ -6,7 +6,7 @@ interface Props {
   description?: string;
 }
 
-const { title = 'meme-by-bot', description = '한국 밈·슬랭 라이프사이클 아카이브' } = Astro.props;
+const { title = 'meme-by-bot', description = '한국 밈·슬랭 라이프사이클 아카이브. 장기 봇 운영 실험.' } = Astro.props;
 const pageTitle = title === 'meme-by-bot' ? title : `${title} · meme-by-bot`;
 ---
 <!doctype html>
@@ -17,25 +17,35 @@ const pageTitle = title === 'meme-by-bot' ? title : `${title} · meme-by-bot`;
     <meta name="description" content={description} />
     <title>{pageTitle}</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&family=Noto+Serif+KR:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="wrap">
-      <header class="site-header">
-        <a class="brand" href="/">meme-by-bot</a>
-        <nav class="nav">
-          <a href="/">목록</a>
-          <a href="/about">소개</a>
-          <label class="toggle" title="접힌 항목을 모두 표시">
-            <input type="checkbox" id="show-all-toggle" />
-            <span>전부 보기</span>
-          </label>
-        </nav>
+      <header class="masthead">
+        <div class="masthead-top">
+          <a class="brand" href="/">meme-by-bot</a>
+          <nav class="nav">
+            <a href="/">목록</a>
+            <a href="/about">소개</a>
+            <label class="toggle" title="접힌 항목을 모두 표시">
+              <input type="checkbox" id="show-all-toggle" />
+              <span>전부 보기</span>
+            </label>
+          </nav>
+        </div>
+        <p class="masthead-kicker">한국 밈·슬랭 기록 · 장기 봇 운영 실험</p>
       </header>
       <main>
         <slot />
       </main>
-      <footer class="footer">
-        출처 링크는 공개 항목과 잠금 해제 후에만 표시됩니다. 접힌 항목은 필요할 때만 열어보면 돼요.
+      <footer class="colophon">
+        <p>meme-by-bot</p>
+        <p>출처 링크는 공개 항목과, 접힌 항목은 잠금을 연 뒤에만 표시합니다.</p>
       </footer>
     </div>
     <script>

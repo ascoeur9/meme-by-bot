@@ -1,83 +1,12 @@
 ---
-import { needsUnlock, maskTerm, unlockPayload, formatIsoWeekKo, hasFade, platformLabel, type Meme } from '../lib/meme';
+import MemeEntry from './MemeEntry.astro';
+import type { Meme } from '../lib/meme';
 
 interface Props {
   meme: Meme;
+  index?: number;
 }
 
-const { meme } = Astro.props;
-const locked = needsUnlock(meme);
-const statusLabel = meme.status === 'active' ? '활성' : '쇠퇴';
-const payload = locked ? unlockPayload(meme) : null;
-const displayTerm = locked ? maskTerm(meme.term) : meme.term;
-const sources = meme.sources ?? [];
-const showFade = hasFade(meme.fade);
+const { meme, index } = Astro.props;
 ---
-<article
-  class="card"
-  data-meme-id={meme.id}
-  data-needs-unlock={locked ? 'true' : 'false'}
-  data-layout="list"
->
-  <div class="card-top">
-    <h2 class:list={['term', { masked: locked }]} data-field="term">{displayTerm}</h2>
-    <div class="badges">
-      {locked && <span class="badge hidden-badge">접힘</span>}
-      <span class:list={['badge', `status-${meme.status}`]}>{statusLabel}</span>
-    </div>
-  </div>
-
-  <div class="meta-row">
-    <span>첫 등장 {formatIsoWeekKo(meme.firstSeen)}</span>
-    <span>정점 {formatIsoWeekKo(meme.peak)}</span>
-    {showFade && <span>쇠퇴 {formatIsoWeekKo(meme.fade!)}</span>}
-  </div>
-
-  {locked && (
-    <>
-      <p class="fold-hint">평가·갈등 뉘앙스가 있을 수 있어요</p>
-      <button type="button" class="reveal-btn" aria-label="주의하고 열어보기">주의하고 열어보기</button>
-    </>
-  )}
-
-  {locked ? (
-    <>
-      {/* Empty until unlock — no plaintext body/sources in the locked DOM */}
-      <div class="body-block" data-unlock-body hidden></div>
-      <script
-        type="application/json"
-        data-unlock-payload
-        is:inline
-        set:html={JSON.stringify(payload)}
-      />
-    </>
-  ) : (
-    <div class="body-block">
-      <p>{meme.meaning}</p>
-      <p><strong>예:</strong> {meme.example}</p>
-      <div class="tags">
-        {meme.tags.map((t) => <span class="tag">{t}</span>)}
-      </div>
-      {sources.length > 0 && (
-        <div class="sources">
-          <span class="sources-label">출처</span>
-          <ul class="sources-list">
-            {sources.map((s) => {
-              const plat = platformLabel(s.platform);
-              return (
-              <li>
-                <a href={s.url} target="_blank" rel="noopener noreferrer">{s.label}</a>
-                {plat && <span class="source-platform">{plat}</span>}
-              </li>
-              );
-            })}
-          </ul>
-        </div>
-      )}
-    </div>
-  )}
-
-  <p class="meta-row" style="margin:0">
-    <a href={`/memes/${meme.id}`}>자세히 보기 →</a>
-  </p>
-</article>
+<MemeEntry meme={meme} layout="list" index={index} />

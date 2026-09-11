@@ -3,12 +3,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import MemeCard from '../components/MemeCard.astro';
 import memes from '../../data/memes.json';
 ---
-<BaseLayout title="meme-by-bot" description="한국 밈·슬랭 라이프사이클 아카이브">
+<BaseLayout title="meme-by-bot" description="한국 밈·슬랭 라이프사이클 아카이브. 장기 봇 운영 실험.">
   <section class="hero">
+    <p class="kicker">목록</p>
     <h1>밈·슬랭 라이프사이클</h1>
-    <p>등장 → 정점 → 쇠퇴 주기를 기록하는 아카이브입니다. 접힌 항목은 필요할 때만 열어보면 돼요.</p>
+    <p>
+      이 사이트는 한국 온라인 밈·슬랭의 등장·정점·쇠퇴를 기록하는 장기 봇 운영 실험입니다.
+      매주 봇이 수집 → 선정 → 가드 → 배포 요청 순으로 돌리고, 사람(Hare)은 정책, 외부 게시, 유료, 도메인, 큰 기능만 다룹니다.
+    </p>
   </section>
-  <section class="grid" aria-label="밈 목록">
-    {memes.map((meme) => <MemeCard meme={meme} />)}
+  <section class="catalog" aria-label="밈 목록">
+    {memes.map((meme, index) => <MemeCard meme={meme} index={index} />)}
   </section>
 </BaseLayout>

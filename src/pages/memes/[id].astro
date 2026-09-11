@@ -1,7 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import MemeEntry from '../../components/MemeEntry.astro';
 import memes from '../../../data/memes.json';
-import { needsUnlock, maskTerm, unlockPayload, formatIsoWeekKo, hasFade, platformLabel, type Meme } from '../../lib/meme';
+import { needsUnlock, type Meme } from '../../lib/meme';
 
 export function getStaticPaths() {
   return (memes as Meme[]).map((meme) => ({
@@ -12,108 +13,12 @@ export function getStaticPaths() {
 
 const { meme } = Astro.props as { meme: Meme };
 const locked = needsUnlock(meme);
-const statusLabel = meme.status === 'active' ? '활성' : '쇠퇴';
-const payload = locked ? unlockPayload(meme) : null;
-const displayTerm = locked ? maskTerm(meme.term) : meme.term;
-const pageTitle = locked ? '접힌 항목' : meme.term;
+const pageTitle = locked ? '접혀 있음' : meme.term;
 const pageDescription = locked
-  ? '접힌 밈·슬랭 항목 (필요할 때만 열어보면 돼요)'
+  ? '접힌 밈·슬랭 항목'
   : `${meme.term} 라이프사이클`;
-const sources = meme.sources ?? [];
-const showFade = hasFade(meme.fade);
-const lifecycleText = showFade
-  ? `등장 ${formatIsoWeekKo(meme.firstSeen)} → 정점 ${formatIsoWeekKo(meme.peak)} → 쇠퇴 ${formatIsoWeekKo(meme.fade!)}`
-  : `등장 ${formatIsoWeekKo(meme.firstSeen)} → 정점 ${formatIsoWeekKo(meme.peak)}`;
 ---
 <BaseLayout title={pageTitle} description={pageDescription}>
-  <p class="back"><a href="/">← 목록으로</a></p>
-  <article
-    class="card detail"
-    data-meme-id={meme.id}
-    data-needs-unlock={locked ? 'true' : 'false'}
-    data-layout="detail"
-  >
-    <div class="card-top">
-      <h1 class:list={['term', { masked: locked }]} data-field="term">{displayTerm}</h1>
-      <div class="badges">
-        {locked && <span class="badge hidden-badge">접힘</span>}
-        <span class:list={['badge', `status-${meme.status}`]}>{statusLabel}</span>
-      </div>
-    </div>
-
-    <div class="meta-row">
-      <span>첫 등장 {formatIsoWeekKo(meme.firstSeen)}</span>
-      <span>정점 {formatIsoWeekKo(meme.peak)}</span>
-      {showFade && <span>쇠퇴 {formatIsoWeekKo(meme.fade!)}</span>}
-      <span>출처 수 {meme.sourceCount}</span>
-    </div>
-
-    {locked && (
-      <>
-        <p class="fold-hint">평가·갈등 뉘앙스가 있을 수 있어요</p>
-        <button type="button" class="reveal-btn" aria-label="주의하고 열어보기">주의하고 열어보기</button>
-      </>
-    )}
-
-    {locked ? (
-      <>
-        <div class="body-block" data-unlock-body hidden></div>
-        <script
-          type="application/json"
-          data-unlock-payload
-          is:inline
-          set:html={JSON.stringify(payload)}
-        />
-      </>
-    ) : (
-      <div class="body-block">
-        <dl>
-          <div>
-            <dt>의미</dt>
-            <dd>{meme.meaning}</dd>
-          </div>
-          <div>
-            <dt>예시</dt>
-            <dd>{meme.example}</dd>
-          </div>
-          <div>
-            <dt>라이프사이클</dt>
-            <dd>
-              {lifecycleText}
-            </dd>
-          </div>
-          <div>
-            <dt>태그</dt>
-            <dd class="tags">
-              {meme.tags.map((t) => <span class="tag">{t}</span>)}
-            </dd>
-          </div>
-          {sources.length > 0 && (
-            <div>
-              <dt>출처</dt>
-              <dd>
-                <div class="sources">
-                  <ul class="sources-list">
-                    {sources.map((s) => {
-                      const plat = platformLabel(s.platform);
-                      return (
-                      <li>
-                        <a href={s.url} target="_blank" rel="noopener noreferrer">{s.label}</a>
-                        {plat && <span class="source-platform">{plat}</span>}
-                      </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              </dd>
-            </div>
-          )}
-          <div>
-            <dt>갱신</dt>
-            <dd>{meme.updatedAt}</dd>
-          </div>
-        </dl>
-      </div>
-    )}
-  </article>
+  <p class="back"><a href="/">목록으로</a></p>
+  <MemeEntry meme={meme} layout="detail" />
 </BaseLayout>

@@ -1,5 +1,5 @@
 ---
-import { needsUnlock, maskTerm, unlockPayload, formatIsoWeekKo, type Meme } from '../lib/meme';
+import { needsUnlock, maskTerm, unlockPayload, formatIsoWeekKo, hasFade, type Meme } from '../lib/meme';
 
 interface Props {
   meme: Meme;
@@ -11,6 +11,7 @@ const statusLabel = meme.status === 'active' ? '활성' : '쇠퇴';
 const payload = locked ? unlockPayload(meme) : null;
 const displayTerm = locked ? maskTerm(meme.term) : meme.term;
 const sources = meme.sources ?? [];
+const showFade = hasFade(meme.fade);
 ---
 <article
   class="card"
@@ -29,7 +30,7 @@ const sources = meme.sources ?? [];
   <div class="meta-row">
     <span>첫 등장 {formatIsoWeekKo(meme.firstSeen)}</span>
     <span>정점 {formatIsoWeekKo(meme.peak)}</span>
-    <span>쇠퇴 {formatIsoWeekKo(meme.fade)}</span>
+    {showFade && <span>쇠퇴 {formatIsoWeekKo(meme.fade!)}</span>}
   </div>
 
   {locked && (

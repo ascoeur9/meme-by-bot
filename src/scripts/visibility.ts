@@ -1,4 +1,4 @@
-import { formatIsoWeekKo, type MemeSource, type UnlockPayload } from '../lib/meme';
+import { formatIsoWeekKo, hasFade, type MemeSource, type UnlockPayload } from '../lib/meme';
 
 const STORAGE_KEY = 'meme-by-bot:show-all';
 
@@ -105,7 +105,14 @@ function hydrateDetailBody(body: HTMLElement, payload: UnlockPayload): void {
     dd.textContent = payload.example;
   });
   addRow('라이프사이클', (dd) => {
-    dd.textContent = `등장 ${formatIsoWeekKo(payload.firstSeen)} → 정점 ${formatIsoWeekKo(payload.peak)} → 쇠퇴 ${formatIsoWeekKo(payload.fade)}`;
+    const parts = [
+      `등장 ${formatIsoWeekKo(payload.firstSeen)}`,
+      `정점 ${formatIsoWeekKo(payload.peak)}`,
+    ];
+    if (hasFade(payload.fade)) {
+      parts.push(`쇠퇴 ${formatIsoWeekKo(payload.fade!)}`);
+    }
+    dd.textContent = parts.join(' → ');
   });
   addRow('태그', (dd) => {
     dd.className = 'tags';

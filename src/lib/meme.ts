@@ -10,7 +10,7 @@ export interface Meme {
   example: string;
   firstSeen: string;
   peak: string;
-  fade: string;
+  fade?: string | null;
   sourceCount: number;
   sources?: MemeSource[];
   tags: string[];
@@ -28,13 +28,18 @@ export interface UnlockPayload {
   tags: string[];
   firstSeen: string;
   peak: string;
-  fade: string;
+  fade?: string | null;
   updatedAt: string;
   sources?: MemeSource[];
 }
 
 export function needsUnlock(meme: Pick<Meme, 'sensitivity' | 'visibilityDefault'>): boolean {
   return meme.visibilityDefault === 'hidden' || meme.sensitivity === 'sensitive';
+}
+
+/** True when fade week is present and non-empty (status=faded only in practice). */
+export function hasFade(fade?: string | null): boolean {
+  return typeof fade === 'string' && fade.trim().length > 0;
 }
 
 /** Neutral placeholder — safe to put in the locked DOM (no first-grapheme leak). */
@@ -78,9 +83,11 @@ export function unlockPayload(meme: Meme): UnlockPayload {
     tags: meme.tags,
     firstSeen: meme.firstSeen,
     peak: meme.peak,
-    fade: meme.fade,
     updatedAt: meme.updatedAt,
   };
+  if (hasFade(meme.fade)) {
+    payload.fade = meme.fade;
+  }
   if (meme.sources?.length) {
     payload.sources = meme.sources;
   }

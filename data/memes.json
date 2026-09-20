@@ -241,16 +241,11 @@
     "example": "자꾸 몰래 거제야호 함",
     "firstSeen": "2026-W20",
     "peak": "2026-W24",
-    "sourceCount": 2,
+    "sourceCount": 1,
     "sources": [
       {
         "label": "몰래 거제야호 영상",
         "url": "https://x.com/_9xng2/status/2098097301466300499",
-        "platform": "x"
-      },
-      {
-        "label": "거제야호~ 짧은 클립",
-        "url": "https://x.com/e_stxr7/status/2098034596743119119",
         "platform": "x"
       }
     ],
@@ -263,7 +258,7 @@
     "status": "active",
     "sensitivity": "safe",
     "visibilityDefault": "public",
-    "updatedAt": "2026-09-11T12:05:00+09:00"
+    "updatedAt": "2026-09-21T01:11:15+09:00"
   },
   {
     "id": "ganan-keot-eo",

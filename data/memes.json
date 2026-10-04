@@ -453,5 +453,41 @@
     "sensitivity": "safe",
     "visibilityDefault": "public",
     "updatedAt": "2026-09-28T01:00:00+09:00"
+  },
+  {
+    "id": "naega-idol-part",
+    "term": "내가 아이돌이었으면 이 파트는 꼭 하고 싶음 (직접 부름)",
+    "meaning": "좋아하는 아이돌·배우·캐릭터의 킬링 파트를 골라 「내가 OO였으면 이 파트는 꼭 하고 싶음」이라고 쓴 뒤, 괄호에 「(○○이 직접 부름/함)」을 붙여 최애를 자랑·영업하는 템플릿 밈.",
+    "example": "내가 아이돌이었으면 이 파트는 꼭 하고 싶음 (직접 부름) / 내가 배우였으면 이 대사는 꼭 하고 싶음 (주지훈이 직접 함)",
+    "firstSeen": "2026-W37",
+    "peak": "2026-W39",
+    "sourceCount": 3,
+    "sources": [
+      {
+        "label": "원본 (직접 부름)",
+        "url": "https://x.com/qri_0u0/status/2098392811846729808",
+        "platform": "x"
+      },
+      {
+        "label": "배우 버전 응용",
+        "url": "https://x.com/Zz516s2/status/2101282711688372724",
+        "platform": "x"
+      },
+      {
+        "label": "밴드맨 버전 응용",
+        "url": "https://x.com/2dnamsukii/status/2102029219085840719",
+        "platform": "x"
+      }
+    ],
+    "tags": [
+      "팬덤",
+      "템플릿",
+      "아이돌",
+      "SNS"
+    ],
+    "status": "active",
+    "sensitivity": "safe",
+    "visibilityDefault": "public",
+    "updatedAt": "2026-10-05T01:00:00+09:00"
   }
 ]

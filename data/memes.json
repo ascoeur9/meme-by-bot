@@ -489,5 +489,82 @@
     "sensitivity": "safe",
     "visibilityDefault": "public",
     "updatedAt": "2026-10-05T01:00:00+09:00"
+  },
+  {
+    "id": "l-eul-gajyeoga",
+    "term": "L을 가져가 (엘을 가져가)",
+    "meaning": "영어 'Take the L(패배를 인정해)'을 그대로 옮긴 말. 「L을 가져가, 크림치즈 허니, L을 가져가, 크리스 크로스, L을 가져가, 야채, L을 가져가, 셀카」로 이어지는 구호와 춤을 따라 하는 챌린지로 퍼졌고, 지금은 머릿속에 맴도는 노래처럼 흥얼거리거나 장난스럽게 상대를 놀릴 때 쓴다.",
+    "example": "요즘 내 알고리즘 상태: L을 가져가! L을 가져가! / 동생한테 엘을 가져가 해 달랬더니 벌떡 일어나서 춰 줌",
+    "firstSeen": "2026-W25",
+    "peak": "2026-W37",
+    "sourceCount": 4,
+    "sources": [
+      {
+        "label": "알고리즘 도배 반응",
+        "url": "https://x.com/entttorin_/status/2097325081517244881",
+        "platform": "x"
+      },
+      {
+        "label": "구호 전체 따라 부르기",
+        "url": "https://x.com/mooksunii/status/2103063146172981549",
+        "platform": "x"
+      },
+      {
+        "label": "스트리머 통방 확산 증언",
+        "url": "https://x.com/val4u7/status/2106811795759632610",
+        "platform": "x"
+      },
+      {
+        "label": "X 유행어 정리글 (보조)",
+        "url": "https://x.com/jangkku920/status/2109472011689087141",
+        "platform": "x"
+      }
+    ],
+    "tags": [
+      "챌린지",
+      "구호",
+      "숏폼",
+      "SNS"
+    ],
+    "status": "active",
+    "sensitivity": "safe",
+    "visibilityDefault": "public",
+    "updatedAt": "2026-10-19T01:00:00+09:00"
+  },
+  {
+    "id": "gamdo-an-om",
+    "term": "감도 안 옴",
+    "meaning": "'상상도 안 될 만큼'이라는 과장 감탄. 「얼마나 ~했을지 감도 안 옴」을 두 줄로 반복해 쓰는 형식이 유행했다. 데이식스 영케이가 아버지에게 받은 문자(\"얼마나 잘할라고 하는지 감도 안 옴\")를 소개한 일화가 팬덤에서 퍼지며 템플릿이 됐다.",
+    "example": "막내를 얼마나 아끼는지 감도 안 옴 / 서로 얼마나 리스펙하는지 감도 안 옴",
+    "firstSeen": "2026-W27",
+    "peak": "2026-W37",
+    "sourceCount": 3,
+    "sources": [
+      {
+        "label": "영케이 아버지 문자 일화",
+        "url": "https://x.com/youngsoock/status/2074754112043077826",
+        "platform": "x"
+      },
+      {
+        "label": "두 줄 반복 응용",
+        "url": "https://x.com/judyth_xo_/status/2099140210240233831",
+        "platform": "x"
+      },
+      {
+        "label": "10월에도 계속 쓰인다는 반응",
+        "url": "https://x.com/aninajollidago/status/2110399789200490968",
+        "platform": "x"
+      }
+    ],
+    "tags": [
+      "팬덤",
+      "템플릿",
+      "아이돌",
+      "SNS"
+    ],
+    "status": "active",
+    "sensitivity": "safe",
+    "visibilityDefault": "public",
+    "updatedAt": "2026-10-19T01:00:00+09:00"
   }
 ]

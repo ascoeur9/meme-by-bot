@@ -566,5 +566,88 @@
     "sensitivity": "safe",
     "visibilityDefault": "public",
     "updatedAt": "2026-10-19T01:00:00+09:00"
+  },
+  {
+    "id": "odisei",
+    "term": "오디세이",
+    "meaning": "초등생 사이에서 쓰인다는 줄임말. 오늘 디저트 세 개 이상 먹었다는 뜻이다. 2026년 11월 초 현직 초등학생이 알려 주는 유행어 영상이 퍼지며, X에서도 자신이 오디세이했다고 인증하는 식으로 쓰이기 시작했다.",
+    "example": "덕분에 오디세이 했습니다 / 혼자 4개 벌써 순삭함. 오디세이 임",
+    "firstSeen": "2026-W45",
+    "peak": "2026-W45",
+    "sourceCount": 4,
+    "sources": [
+      {
+        "label": "초등 유행어 정리 영상 확산",
+        "url": "https://x.com/mywonh33/status/2118659473392979999",
+        "platform": "x"
+      },
+      {
+        "label": "직접 해 봤다는 인증",
+        "url": "https://x.com/2121_purin/status/2119430795345727924",
+        "platform": "x"
+      },
+      {
+        "label": "디저트 네 개 인증",
+        "url": "https://x.com/ddithiXwX/status/2119342487949234652",
+        "platform": "x"
+      },
+      {
+        "label": "뜻을 붙여 사용",
+        "url": "https://x.com/mxxmew/status/2119314612537671777",
+        "platform": "x"
+      }
+    ],
+    "tags": [
+      "신조어",
+      "초등",
+      "유행어",
+      "SNS"
+    ],
+    "status": "active",
+    "sensitivity": "safe",
+    "visibilityDefault": "public",
+    "updatedAt": "2026-11-09T01:00:00+09:00"
+  },
+  {
+    "id": "ppaenan-jiwongeum",
+    "term": "빼난지원금",
+    "meaning": "빼빼로를 못 받은 사람에게 빼빼로를 나눠 준다는 말. 재난지원금에 빗댄 초등 신조어로, 빼빼로데이를 앞두고 유행어 영상과 함께 퍼졌고 서로 빼난지원금을 달라거나 주겠다는 장난으로 쓰인다.",
+    "example": "오빠 빼난지원금 주떼요 / 빼난지원금 받고싶은 트친 있어요?",
+    "firstSeen": "2026-W45",
+    "peak": "2026-W45",
+    "sourceCount": 4,
+    "sources": [
+      {
+        "label": "초등 유행어 정리 영상 확산",
+        "url": "https://x.com/mywonh33/status/2118659473392979999",
+        "platform": "x"
+      },
+      {
+        "label": "지원 요청",
+        "url": "https://x.com/isamowoodz/status/2119451019130396946",
+        "platform": "x"
+      },
+      {
+        "label": "트친에게 제안",
+        "url": "https://x.com/dm61dod/status/2119407866167894377",
+        "platform": "x"
+      },
+      {
+        "label": "선물 맥락에서 사용",
+        "url": "https://x.com/cimrann_/status/2119352104460734949",
+        "platform": "x"
+      }
+    ],
+    "tags": [
+      "신조어",
+      "초등",
+      "유행어",
+      "빼빼로데이",
+      "SNS"
+    ],
+    "status": "active",
+    "sensitivity": "safe",
+    "visibilityDefault": "public",
+    "updatedAt": "2026-11-09T01:00:00+09:00"
   }
 ]

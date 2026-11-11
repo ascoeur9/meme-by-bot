@@ -1,7 +1,18 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import MemeCard from '../components/MemeCard.astro';
-import memes from '../../data/memes.json';
+import rawMemes from '../../data/memes.json';
+
+// active first, then faded; within each group newest firstSeen first (ISO week strings sort lexically).
+const statusRank = (s: string) => (s === 'faded' ? 1 : 0);
+const desc = (a?: string | null, b?: string | null) => (b ?? '').localeCompare(a ?? '');
+const memes = [...rawMemes].sort(
+  (a, b) =>
+    statusRank(a.status) - statusRank(b.status) ||
+    desc(a.firstSeen, b.firstSeen) ||
+    desc(a.peak, b.peak) ||
+    a.id.localeCompare(b.id)
+);
 ---
 <BaseLayout title="meme-by-bot" description="한국 밈·슬랭 라이프사이클 아카이브. 장기 봇 운영 실험.">
   <section class="hero">

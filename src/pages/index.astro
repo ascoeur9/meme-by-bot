@@ -3,14 +3,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import MemeCard from '../components/MemeCard.astro';
 import rawMemes from '../../data/memes.json';
 
-// active first, then faded; within each group newest firstSeen first (ISO week strings sort lexically).
+// active first, then faded; within each group newest peak first, then newest firstSeen (ISO week strings sort lexically).
 const statusRank = (s: string) => (s === 'faded' ? 1 : 0);
 const desc = (a?: string | null, b?: string | null) => (b ?? '').localeCompare(a ?? '');
 const memes = [...rawMemes].sort(
   (a, b) =>
     statusRank(a.status) - statusRank(b.status) ||
-    desc(a.firstSeen, b.firstSeen) ||
     desc(a.peak, b.peak) ||
+    desc(a.firstSeen, b.firstSeen) ||
     a.id.localeCompare(b.id)
 );
 ---

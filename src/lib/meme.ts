@@ -32,7 +32,7 @@ export interface Meme {
   sourceCount: number;
   sources?: MemeSource[];
   tags: string[];
-  status: 'active' | 'faded';
+  status: 'active' | 'lingering' | 'faded';
   sensitivity: 'safe' | 'sensitive';
   visibilityDefault: 'public' | 'hidden';
   updatedAt: string;
@@ -55,7 +55,7 @@ export function needsUnlock(meme: Pick<Meme, 'sensitivity' | 'visibilityDefault'
   return meme.visibilityDefault === 'hidden' || meme.sensitivity === 'sensitive';
 }
 
-/** True when fade week is present and non-empty (status=faded only in practice). */
+/** True when fade week is present and non-empty (status=lingering or faded). */
 export function hasFade(fade?: string | null): boolean {
   return typeof fade === 'string' && fade.trim().length > 0;
 }

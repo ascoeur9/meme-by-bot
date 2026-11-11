@@ -81,8 +81,8 @@ function validateMeme(meme, ctx) {
     fail(`${ctx}: tags must be an array of strings`);
   }
 
-  if (meme.status !== 'active' && meme.status !== 'faded') {
-    fail(`${ctx}: status must be "active" or "faded"`);
+  if (!['active', 'lingering', 'faded'].includes(meme.status)) {
+    fail(`${ctx}: status must be "active", "lingering" or "faded"`);
   }
 
   if (meme.sensitivity !== 'safe' && meme.sensitivity !== 'sensitive') {
@@ -98,12 +98,12 @@ function validateMeme(meme, ctx) {
     meme.fade !== null &&
     !(typeof meme.fade === 'string' && meme.fade.trim() === '');
 
-  if (hasFade && meme.status !== 'faded') {
-    fail(`${ctx}: fade is only allowed when status === "faded" (got status="${meme.status}")`);
+  if (hasFade && meme.status === 'active') {
+    fail(`${ctx}: fade is not allowed when status === "active"`);
   }
 
-  if (meme.status === 'faded' && !hasFade) {
-    warn(`${ctx}: status is "faded" but fade week is missing`);
+  if (meme.status !== 'active' && !hasFade) {
+    warn(`${ctx}: status is "${meme.status}" but fade week is missing`);
   }
 
   // Auto-fix: sensitive => visibilityDefault hidden

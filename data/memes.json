@@ -163,10 +163,11 @@
       "일상",
       "줄임말"
     ],
-    "status": "active",
+    "status": "faded",
     "sensitivity": "safe",
     "visibilityDefault": "public",
-    "updatedAt": "2026-09-11T02:00:00Z"
+    "updatedAt": "2026-11-11T17:20:00+09:00",
+    "fade": "2026-W34"
   },
   {
     "id": "yeong-keu-keu",
@@ -413,10 +414,11 @@
       "템플릿",
       "SNS"
     ],
-    "status": "active",
+    "status": "faded",
     "sensitivity": "safe",
     "visibilityDefault": "public",
-    "updatedAt": "2026-09-28T01:00:00+09:00"
+    "updatedAt": "2026-11-11T17:20:00+09:00",
+    "fade": "2026-W41"
   },
   {
     "id": "seokgamoney",
@@ -485,10 +487,11 @@
       "아이돌",
       "SNS"
     ],
-    "status": "active",
+    "status": "faded",
     "sensitivity": "safe",
     "visibilityDefault": "public",
-    "updatedAt": "2026-10-05T01:00:00+09:00"
+    "updatedAt": "2026-11-11T17:20:00+09:00",
+    "fade": "2026-W41"
   },
   {
     "id": "l-eul-gajyeoga",

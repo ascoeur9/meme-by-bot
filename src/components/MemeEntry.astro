@@ -9,7 +9,8 @@ interface Props {
 
 const { meme, layout, index } = Astro.props;
 const locked = needsUnlock(meme);
-const statusLabel = meme.status === 'active' ? '활성' : '쇠퇴';
+const statusLabel = meme.status === 'active' ? '활성' : meme.status === 'lingering' ? '잔존' : '쇠퇴';
+const fadeLabel = meme.status === 'lingering' ? '유행 끝' : '쇠퇴';
 const payload = locked ? unlockPayload(meme) : null;
 const displayTerm = locked ? maskTerm(meme.term) : meme.term;
 const sources = meme.sources ?? [];
@@ -37,7 +38,7 @@ const folio = typeof index === 'number' ? String(index + 1).padStart(2, '0') : n
   <p class="dateline">
     <span>등장 {formatIsoWeekKo(meme.firstSeen)}</span>
     <span>정점 {formatIsoWeekKo(meme.peak)}</span>
-    {showFade && <span data-field="fade">쇠퇴 {formatIsoWeekKo(meme.fade as string)}</span>}
+    {showFade && <span data-field="fade">{fadeLabel} {formatIsoWeekKo(meme.fade as string)}</span>}
     {layout === 'detail' && <span>출처 {meme.sourceCount}건</span>}
   </p>
 

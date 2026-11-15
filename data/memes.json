@@ -451,10 +451,11 @@
       "힐링",
       "SNS"
     ],
-    "status": "active",
+    "status": "faded",
     "sensitivity": "safe",
     "visibilityDefault": "public",
-    "updatedAt": "2026-09-28T01:00:00+09:00"
+    "updatedAt": "2026-11-16T01:10:00+09:00",
+    "fade": "2026-W44"
   },
   {
     "id": "naega-idol-part",

@@ -135,6 +135,11 @@ function validateMeme(meme, ctx) {
     }
   }
 
+  const sourcesLen = Array.isArray(out.sources) ? out.sources.length : 0;
+  if (out.sourceCount !== sourcesLen) {
+    fail(`${ctx}: sourceCount (${out.sourceCount}) must equal sources.length (${sourcesLen})`);
+  }
+
   // Strip empty fade on active (after validation already rejected non-empty fade)
   if (out.status === 'active' && 'fade' in out) {
     const { fade: _fade, ...rest } = out;

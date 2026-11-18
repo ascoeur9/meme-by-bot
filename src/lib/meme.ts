@@ -32,7 +32,9 @@ export interface Meme {
   sourceCount: number;
   sources?: MemeSource[];
   tags: string[];
-  status: 'active' | 'lingering' | 'faded';
+  status: 'active' | 'lingering' | 'faded' | 'settled';
+  /** ISO week the meme became settled (status=settled only). */
+  settledWeek?: string | null;
   sensitivity: 'safe' | 'sensitive';
   visibilityDefault: 'public' | 'hidden';
   updatedAt: string;

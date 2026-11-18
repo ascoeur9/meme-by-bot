@@ -81,8 +81,20 @@ function validateMeme(meme, ctx) {
     fail(`${ctx}: tags must be an array of strings`);
   }
 
-  if (!['active', 'lingering', 'faded'].includes(meme.status)) {
-    fail(`${ctx}: status must be "active", "lingering" or "faded"`);
+  if (!['active', 'lingering', 'faded', 'settled'].includes(meme.status)) {
+    fail(`${ctx}: status must be "active", "lingering", "faded" or "settled"`);
+  }
+
+  const hasSettledWeek =
+    typeof meme.settledWeek === 'string' && meme.settledWeek.trim() !== '';
+  if (hasSettledWeek && meme.status !== 'settled') {
+    fail(`${ctx}: settledWeek is only allowed when status === "settled"`);
+  }
+  if (meme.status === 'settled' && !hasSettledWeek) {
+    fail(`${ctx}: status is "settled" but settledWeek is missing`);
+  }
+  if (hasSettledWeek && !/^\d{4}-W\d{2}$/.test(meme.settledWeek)) {
+    fail(`${ctx}: settledWeek must look like YYYY-Www`);
   }
 
   if (meme.sensitivity !== 'safe' && meme.sensitivity !== 'sensitive') {
@@ -102,7 +114,7 @@ function validateMeme(meme, ctx) {
     fail(`${ctx}: fade is not allowed when status === "active"`);
   }
 
-  if (meme.status !== 'active' && !hasFade) {
+  if ((meme.status === 'lingering' || meme.status === 'faded') && !hasFade) {
     warn(`${ctx}: status is "${meme.status}" but fade week is missing`);
   }
 

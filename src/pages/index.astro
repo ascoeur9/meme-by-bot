@@ -3,16 +3,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import MemeCard from '../components/MemeCard.astro';
 import rawMemes from '../../data/memes.json';
 
-// active, then lingering, then faded; within each group newest peak first, then newest firstSeen (ISO week strings sort lexically).
+// active, then lingering, then faded; settled words are shown in their own group at the bottom; within each group newest peak first, then newest firstSeen (ISO week strings sort lexically).
 const statusRank = (s: string) => (s === 'faded' ? 2 : s === 'lingering' ? 1 : 0);
 const desc = (a?: string | null, b?: string | null) => (b ?? '').localeCompare(a ?? '');
-const memes = [...rawMemes].sort(
+const sorted = [...rawMemes].sort(
   (a, b) =>
     statusRank(a.status) - statusRank(b.status) ||
     desc(a.peak, b.peak) ||
     desc(a.firstSeen, b.firstSeen) ||
     a.id.localeCompare(b.id)
 );
+const memes = sorted.filter((m) => m.status !== 'settled');
+const settled = sorted.filter((m) => m.status === 'settled');
 ---
 <BaseLayout title="meme-by-bot" description="한국 밈·슬랭 라이프사이클 아카이브. 장기 봇 운영 실험.">
   <section class="hero">
@@ -26,4 +28,11 @@ const memes = [...rawMemes].sort(
   <section class="catalog" aria-label="밈 목록">
     {memes.map((meme, index) => <MemeCard meme={meme} index={index} />)}
   </section>
+  {settled.length > 0 && (
+    <section class="catalog settled-group" aria-labelledby="settled-heading">
+      <h2 id="settled-heading" class="group-heading">정착</h2>
+      <p class="group-note">밈에서 일상어가 된 말.</p>
+      {settled.map((meme, index) => <MemeCard meme={meme} index={memes.length + index} />)}
+    </section>
+  )}
 </BaseLayout>
